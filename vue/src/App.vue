@@ -1,13 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">HOME</router-link> |
-      <router-link to="/film">Films populaires</router-link> |
-      <router-link to="/serie">Série Tv</router-link>
-    </div>
+    <Header/>
     <router-view/>
   </div>
 </template>
+
+<script>
+import Header from './components/Header/Header'
+
+export default {
+  components: {
+    Header
+  }
+  
+}
+</script>
+
 
 <style>
 #app {
