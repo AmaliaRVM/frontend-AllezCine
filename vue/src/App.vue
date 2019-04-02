@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">HOME</router-link> |
-      <router-link to="/film">Films populaires</router-link> |
-      <router-link to="/serie">Série Tv</router-link>
-    </div>
+    <Header/>
     <router-view/>
     <Footer/>
   </div>
@@ -13,10 +9,12 @@
 <script>
 
   import Footer from './components/Footer/Footer'
+  import Header from './components/Header/Header'
 
 export default {
   components : {
-    Footer
+    Footer,
+    Header
   }
 }
 
