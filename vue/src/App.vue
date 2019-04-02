@@ -6,8 +6,22 @@
       <router-link to="/serie">Série Tv</router-link>
     </div>
     <router-view/>
+    <Footer/>
   </div>
 </template>
+
+<script>
+
+  import Footer from './components/Footer/Footer'
+
+export default {
+  components : {
+    Footer
+  }
+}
+
+</script>
+
 
 <style>
 #app {
@@ -17,5 +31,12 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+/* #nav {
+  background-color: black;
+  
+} */
+router-view {
+  background-color: #efefef;
 }
 </style>
