@@ -1,98 +1,58 @@
 <template>
-    <div class='carousel-view'>
-        <transition-group
-            class='carousel'
-            tag="div">
-            <div
-                v-for="slide in slides" 
-                class='slide'
-                :key="slide.id">
-                <h4> {{ slide.title }} </h4>
-            </div>
-        </transition-group>
-        <div class='carousel-controls'>
-            <button class='carousel-controls__button' @click="previous">prev</button>
-            <button class='carousel-controls__button' @click="next">next</button>
-        </div>
-    </div>
+    <Carousel :per-page="1" :mouse-drag="true">
+        <Slide v-for="(slide, index) in lists" :key="index">
+                
+            <img id="toposter" :src="slide" alt="movie">
+        </Slide>
+    </Carousel>
 </template>
 
 <script>
 import {Carousel,Slide} from 'vue-carousel'
+import axios from 'axios'
 
 export default {
+    name: 'CarouselView',
+    props: {
+
+    },
 
     data() {
         return{
-            slides: [
-                {
-                    title: 'Slide A',
-                    id: 1
-                },
-                {
-                    title: 'Slide B',
-                    id: 2
-                },
-                {
-                    title: 'Slide C',
-                    id: 3
-                }
-            ]
+            lists:  Array
         }
     },
 
-    methods: {
-        next () {
-            const first = this.slides.shift ()
-            this.slides = this.slides.concat(first)
-        },
-        previous () {
-            const last = this.slides.pop()
-            this.slides = [last].concat(this.slides)
-        }
+    mounted () {
+        /* var self = this; */
+        this.lists=[]
+        axios
+        .get('https://api.themoviedb.org/3/discover/movie?api_key=2704afc9f60b8ac59b4f28b3a0252704&language=en-US&sort_by=release_date.desc&vote_count.gte=10&vote_average.gte=8&with_original_language=en')
+        .then(response=>{
+            let i = 0;
+            while(i<5) {
+                let item = response.data.results[i];
+                this.lists[i]="https://image.tmdb.org/t/p/original"+item.poster_path;
+                i++;
+            }
+        })
+        .catch(function(error){
+            throw('Error: ', error);
+        })
+    },
+
+    components: {
+        Carousel,
+        Slide
     }
 
 }
 </script>
 
 <style>
-.carousel-view {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: red;
-}
-.carousel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    width: 24em;
-    min-height: 25em;
-    background-color: blueviolet;
-}
-.slide {
-    flex: 0 0 20em;
-    height: 20em;
-    margin: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0.1em dashed #000;
-    background-color: white;
-    width: 80vw;
-    transition: transform 0.3s ease-in-out;
-
-}
-.slide:first-of-type {
-    opacity: 0;
-}
-.slide:last-of-type {
-    opacity: 0;
-}
-h4 {
-    color: black;
+#toposter {
+    width: 300px;
+    max-width: 100%;
 }
 
 </style>

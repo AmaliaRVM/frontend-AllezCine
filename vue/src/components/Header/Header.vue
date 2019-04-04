@@ -1,9 +1,11 @@
 <template>
     <div class="header">
         <div class="navbar">
-            <router-link id="home" to="/">HOME</router-link>
-            <router-link id="film" to="/film">Films populaires</router-link>
-            <router-link id="serie" to="/serie">Série Tv</router-link>
+            <ul>
+                <li><router-link id="home" to="/">HOME</router-link></li>
+                <li><router-link id="film" to="/film">Films populaires</router-link></li>
+                <li><router-link id="serie" to="/serie">Série Tv</router-link></li>
+            </ul>
             <div id="search">
                 <input id="right" type="text" placeholder="Search...">
                 <button type="submit" class="searchButton">
@@ -35,6 +37,7 @@ export default {
     border: 2px solid black;
     background-color: black;
     height: auto;
+    
 }
 
 .navbar {
@@ -71,6 +74,12 @@ li:hover {
     justify-self: end;
 }
 
+/* Carousel container */
+#carousel {
+    height: auto;
+    background-color: white;
+    padding: 20px;
+}
 
 
 </style>
