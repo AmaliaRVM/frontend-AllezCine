@@ -1,7 +1,8 @@
 <template>
     <Carousel :per-page="1" :mouse-drag="true">
         <Slide v-for="(slide, index) in lists" :key="index">
-            Slide {{ slide }} Content
+                
+            <img id="toposter" :src="slide" alt="movie">
         </Slide>
     </Carousel>
 </template>
@@ -18,17 +19,25 @@ export default {
 
     data() {
         return{
-            lists: ['test1', 'test2', 'test3']
+            lists:  Array
         }
     },
 
     mounted () {
-        axios.get('https://api.themoviedb.org/3/discover/movie?api_key=2704afc9f60b8ac59b4f28b3a0252704&language=en-US&sort_by=release_date.desc&vote_count.gte=10&vote_average.gte=8&with_original_language=en')
-        .then(function(res){
-            console.log('Data: ', res.data);
+        /* var self = this; */
+        this.lists=[]
+        axios
+        .get('https://api.themoviedb.org/3/discover/movie?api_key=2704afc9f60b8ac59b4f28b3a0252704&language=en-US&sort_by=release_date.desc&vote_count.gte=10&vote_average.gte=8&with_original_language=en')
+        .then(response=>{
+            let i = 0;
+            while(i<5) {
+                let item = response.data.results[i];
+                this.lists[i]="https://image.tmdb.org/t/p/original"+item.poster_path;
+                i++;
+            }
         })
         .catch(function(error){
-            console.log('Error: ', error);
+            throw('Error: ', error);
         })
     },
 
@@ -41,6 +50,9 @@ export default {
 </script>
 
 <style>
-
+#toposter {
+    width: 300px;
+    max-width: 100%;
+}
 
 </style>
