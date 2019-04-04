@@ -1,36 +1,33 @@
 <template>
     <div class="header">
         <div class="navbar">
-            <ul>
-                <li>
-                    <router-link id="home" to="/">HOME</router-link>
-                </li>
-                <li>
-                    <router-link id="film" to="/film">Films populaires</router-link>
-                </li>
-                <li>
-                    <router-link id="serie" to="/serie">Série Tv</router-link>
-                </li>
-            </ul>
-            <div class="container">
-                <input type="text" placeholder="Search...">
-                <div class="search"></div>
+            <router-link id="home" to="/">HOME</router-link>
+            <router-link id="film" to="/film">Films populaires</router-link>
+            <router-link id="serie" to="/serie">Série Tv</router-link>
+            <div id="search">
+                <input id="right" type="text" placeholder="Search...">
                 <button type="submit" class="searchButton">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
         </div>
+        <div id="carousel">
+            <CarouselView/>
+        </div>
     </div>
 </template>
 
 <script>
+import CarouselView from '../carousel/CarouselView.vue'
+
 export default {
-    data() {
-        return {
-            
-        }
+    components: {
+        CarouselView
     }
+
 }
+
+
 </script>
 
 <style>
@@ -40,7 +37,12 @@ export default {
     height: auto;
 }
 
+.navbar {
+    display: flex;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:600,700');
+
 
 #home {
     color: red;
@@ -51,6 +53,8 @@ export default {
 #film {
     color: white;
 }
+
+
 li {
     display: inline-block;
     list-style: none;
@@ -62,10 +66,11 @@ li:hover {
     background: rgb(230, 148, 148);
     transition: background .3s;
 }
-.container{
-    display: inline-flex;
 
+#right {
+    justify-self: end;
 }
+
 
 
 </style>
