@@ -1,11 +1,9 @@
 <template>
     <div class="container routEl">
         <h1>Top film</h1>
-        <router-link :to="`/Info/`">
         <div class="row allAffiche">
             <affiche v-for="post in posts.results" :post="post" :key="post.id"/>
         </div>
-        </router-link>
     </div>
 </template>
 
