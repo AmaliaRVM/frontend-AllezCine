@@ -1,11 +1,9 @@
 <template>
-    <!-- <div id='truc'> -->
-        <Carousel :per-page="1" :mouse-drag="true">
-            <Slide v-for="(slide, index) in lists" :key="index">
-                <img id="toposter" :src="slide" alt="movie">
-            </Slide>
-        </Carousel>
-    <!-- </div> -->
+    <Carousel :per-page="1" :mouse-drag="true">
+        <Slide v-for="(slide, index) in lists" :key="index">
+            <img id="toposter" :src="slide" alt="movie">
+        </Slide>
+    </Carousel>  
 </template>
 
 <script>
