@@ -1,5 +1,6 @@
 <template>
     <div class="header">
+        <!-- Left elements in navbar -->
         <b-navbar toggleable='lg' class="navbarhome">
             <b-navbar-brand>
                 <router-link id="home" to="/">HOME</router-link>

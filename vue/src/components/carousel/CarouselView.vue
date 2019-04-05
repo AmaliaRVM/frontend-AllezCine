@@ -46,7 +46,8 @@ export default {
 
 <style>
 #toposter {
-    width: 400px;
+    width:500px;
+    
     
 }
 
