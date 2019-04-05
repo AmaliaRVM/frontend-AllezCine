@@ -1,10 +1,11 @@
 <template>
-    <Carousel :per-page="1" :mouse-drag="true">
-        <Slide v-for="(slide, index) in lists" :key="index">
-    
-            <img id="toposter" :src="slide" alt="movie">
-        </Slide>
-    </Carousel>
+    <!-- <div id='truc'> -->
+        <Carousel :per-page="1" :mouse-drag="true">
+            <Slide v-for="(slide, index) in lists" :key="index">
+                <img id="toposter" :src="slide" alt="movie">
+            </Slide>
+        </Carousel>
+    <!-- </div> -->
 </template>
 
 <script>
@@ -19,22 +20,18 @@ export default {
 
     data() {
         return{
-            lists:  Array
+            lists: []
         }
     },
 
     mounted () {
         /* var self = this; */
-        this.lists=[]
         axios
         .get('https://api.themoviedb.org/3/discover/movie?api_key=2704afc9f60b8ac59b4f28b3a0252704&language=en-US&sort_by=release_date.desc&vote_count.gte=10&vote_average.gte=8&with_original_language=en')
         .then(response=>{
-            let i = 0;
-            while(i<5) {
-                let item = response.data.results[i];
-                this.lists[i]="https://image.tmdb.org/t/p/original"+item.poster_path;
-                i++;
-            }
+            response.data.results.slice(0, 5).forEach(film => {
+                this.lists.push("https://image.tmdb.org/t/p/original"+film.poster_path)
+            });
         })
         .catch(function(error){
             throw('Error: ', error);
@@ -51,8 +48,8 @@ export default {
 
 <style>
 #toposter {
-    width: 300px;
-    max-width: 100%;
+    width: 400px;
+    
 }
 
 </style>
