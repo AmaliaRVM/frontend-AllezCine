@@ -1,7 +1,7 @@
 <template>
-    <div class="film">
+    <div class="container routEl">
         <h1>Top séries</h1>
-        <div id="containFilm">
+        <div class="row allAffiche">
             <affiche v-for="post in posts.results" :post="post" :key="post.id"/>
         </div>
     </div>
@@ -34,13 +34,5 @@ export default {
 </script>
 
 <style>
-
-.allImg {
-    width: 100%;
-}
-
-/* #img {
-    background-image: url('post.poster_path')
-} */
 
 </style>
