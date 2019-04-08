@@ -1,9 +1,11 @@
 <template>
-    <Carousel :per-page="1" :mouse-drag="true">
-        <Slide v-for="(slide, index) in lists" :key="index">
-            <img id="toposter" :src="slide" alt="movie">
-        </Slide>
-    </Carousel>  
+    <div class="Carou">
+        <Carousel :per-page="1" :mouse-drag="true">
+            <Slide v-for="(slide, index) in lists" :key="index">
+                <img id="toposter" :src="slide" alt="movie">
+            </Slide>
+        </Carousel> 
+    </div>
 </template>
 
 <script>
@@ -47,8 +49,10 @@ export default {
 <style>
 #toposter {
     width:500px;
-    
-    
+}
+
+.Carou {
+    background-color: black;
 }
 
 </style>
