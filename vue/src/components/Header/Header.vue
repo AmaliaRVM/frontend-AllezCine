@@ -88,8 +88,9 @@ li:hover {
 /* Carousel container */
 #carousel {
     height: auto;
-    background-color: white;
+    background-color:black;
     padding: 20px;
+
 }
 
 
