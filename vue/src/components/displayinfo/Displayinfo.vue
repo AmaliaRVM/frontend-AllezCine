@@ -1,23 +1,27 @@
 <template>
     <div class="displayinfo">
-        <img class="displayimg" :src="getImage(info.poster_path)" alt="posters"/>
-        <div v-if="info.title" class="displaytitle">
-            {{info.title}}
+        <div class="picture">
+            <img class="displayimg" :src="getImage(info.poster_path)" alt="posters"/>
         </div>
-        <div v-if="info.name" class="displaytitle">
-            {{info.name}}
-        </div>
-        <div v-if="info.release_date" class="displaydate">
-            {{info.release_date}}
-        </div>
-        <div v-if="info.first_air_date" class="displaydate">
-            {{info.first_air_date}}
-        </div>
-        <div class="overview">
-            {{info.overview}}
-        </div>
-        <div v-for="(genre, index) in genres" :key="index" class="genre">
-            {{genre.name}}
+        <div class="about">
+            <div v-if="info.title" class="displaytitle">
+                {{info.title}}
+            </div>
+            <div v-if="info.name" class="displaytitle">
+                {{info.name}}
+            </div>
+            <div v-if="info.release_date" class="displaydate">
+                {{info.release_date}}
+            </div>
+            <div v-if="info.first_air_date" class="displaydate">
+                {{info.first_air_date}}
+            </div>
+            <div class="overview">
+                {{info.overview}}
+            </div>
+            <div v-for="(genre, index) in genres" :key="index" class="genre">
+                {{genre.name}}
+            </div>
         </div>
     </div>
 </template>
@@ -72,8 +76,35 @@ export default {
 </script>
 
 <style>
-.displayimg {
-    height: 200px;
+
+.displayinfo {
+    display: flex;
+    justify-content: space-around;
 }
+
+.picture {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+.displayimg {
+    height: 300px;
+
+}
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:600,700');
+
+.about {
+    text-align: justify;
+    width: auto;
+    margin: 20px;
+    font-family:'Fira Sans', sans-serif;
+}
+
+.displaytitle {
+    font-size: 30px;
+}
+
 
 </style>
