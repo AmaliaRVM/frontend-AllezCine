@@ -4,23 +4,26 @@
             <img class="displayimg" :src="getImage(info.poster_path)" alt="posters"/>
         </div>
         <div class="about">
-            <div v-if="info.title" class="displaytitle">
-                {{info.title}}
-            </div>
-            <div v-if="info.name" class="displaytitle">
-                {{info.name}}
-            </div>
-            <div v-if="info.release_date" class="displaydate">
-                {{info.release_date}}
-            </div>
-            <div v-if="info.first_air_date" class="displaydate">
-                {{info.first_air_date}}
+            <div class="titledate">
+                <div v-if="info.title" class="displaytitle">
+                    <h3>{{info.title}}</h3> 
+                </div>
+                <div v-if="info.name" class="displaytitle">
+                    <h3>{{info.name}}</h3>
+                </div>
+                <div v-if="info.release_date" class="displaydate">
+                    <h3>{{getYear(info.release_date)}}</h3>
+                </div>
+                <div v-if="info.first_air_date" class="displaydate">
+                    <h3>{{getYear(info.first_air_date)}}</h3>
+                </div>
             </div>
             <div class="overview">
+                <h4>Synopsis</h4>
                 {{info.overview}}
             </div>
             <div v-for="(genre, index) in genres" :key="index" class="genre">
-                {{genre.name}}
+                <button class="button">{{genre.name}}</button>
             </div>
         </div>
     </div>
@@ -76,12 +79,18 @@ export default {
 </script>
 
 <style>
+/* Main container style */
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:600,700');
 
 .displayinfo {
     display: flex;
     justify-content: space-around;
+    height: auto;
+    padding: 80px;
+    background-color: #ebebeb;
 }
-
+/* About container style */
 .picture {
     height: auto;
     margin-left: auto;
@@ -93,17 +102,46 @@ export default {
 
 }
 
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:600,700');
-
 .about {
     text-align: justify;
     width: auto;
     margin: 20px;
+    padding: 0px 100px 100px 100px;
     font-family:'Fira Sans', sans-serif;
+}
+
+.titledate {
+    display: flex;
 }
 
 .displaytitle {
     font-size: 30px;
+}
+
+.displaydate {
+    margin: auto;
+}
+
+.overview {
+    padding-right: 40%;
+}
+
+.genre {
+    display: inline-block;
+    padding-top: 20px;
+    padding-right:20px;
+
+}
+
+.button{
+    background-color:white;
+    border: none;
+    color: black;
+    font-family: 'Fira Sans', sans-serif;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
 }
 
 
