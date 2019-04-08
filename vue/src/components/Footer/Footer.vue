@@ -46,7 +46,8 @@ export default {
 
 h2 {
     font-family: 'Fira Sans', sans-serif;
-    font-size: 258px;
+    padding-bottom: 2%; 
+    /* font-size: 65px; */
 }
 
 
