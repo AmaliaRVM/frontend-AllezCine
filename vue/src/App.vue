@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header/>
+    <Social class="social"></Social>
     <router-view/>
     <Footer/>
   </div>
@@ -10,12 +11,14 @@
 
   import Footer from './components/Footer/Footer'
   import Header from './components/Header/Header'
-  
+  import Social from './components/Social/Social'
 
+  
 export default {
   components : {
     Footer,
-    Header
+    Header,
+    Social
     
   }
 }
@@ -46,4 +49,15 @@ body {
 router-view {
   background-color: #efefef;
 }
+
+.social{
+  position: fixed;
+  top: 40vh; 
+  width: 150px;
+  /* padding-right: 200px; */
+  /* left: -150px;  */
+
+}
+
+
 </style>
