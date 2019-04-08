@@ -1,18 +1,29 @@
 <template>
     <div class="header">
-        <div class="navbar">
-            <ul>
-                <li><router-link id="home" to="/">HOME</router-link></li>
-                <li><router-link id="film" to="/film">Films populaires</router-link></li>
-                <li><router-link id="serie" to="/serie">Série Tv</router-link></li>
-            </ul>
-            <div id="search">
-                <input id="right" type="text" placeholder="Search...">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </div>
+        <!-- Left elements in navbar -->
+        <b-navbar toggleable='lg' class="navbarhome">
+            <b-navbar-brand>
+                <router-link id="home" to="/">HOME</router-link>
+            </b-navbar-brand>
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+            <b-collapse id="nav-collapse" is-nav>
+                <b-navbar-nav>
+                    <b-nav-item>
+                        <router-link id="film" to="/film">Films populaires</router-link>
+                    </b-nav-item>
+                    <b-nav-item>
+                        <router-link id="serie" to="/serie">Série Tv</router-link>
+                    </b-nav-item>
+                </b-navbar-nav>
+                <!-- Right elements in navbar -->
+                <b-navbar-nav class="ml-auto">
+                    <b-nav-form>
+                        <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+                        <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+                    </b-nav-form>
+                </b-navbar-nav>
+            </b-collapse>
+        </b-navbar>
         <div id="carousel">
             <CarouselView/>
         </div>
@@ -40,8 +51,8 @@ export default {
     
 }
 
-.navbar {
-    display: flex;
+.navbarhome {
+    background-color: black;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:600,700');

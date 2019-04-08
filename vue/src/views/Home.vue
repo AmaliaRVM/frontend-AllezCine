@@ -29,18 +29,16 @@ export default {
         axios.get('https://api.themoviedb.org/3/discover/movie?api_key=2704afc9f60b8ac59b4f28b3a0252704&language=en-US&sort_by=popularity.desc')
         .then( function(res){
             self.films=res.data.results.slice(0,12);
-            console.log('Data: ',res.data);
         })
         .catch( function(error){
-            console.log('Error: ', error);
+            throw('Error: ', error);
         })
         axios.get('https://api.themoviedb.org/3/discover/tv?api_key=2704afc9f60b8ac59b4f28b3a0252704&language=en-US&sort_by=popularity.desc')
         .then( function(res){
             self.series=res.data.results.slice(0,12);
-            console.log('Data: ',res.data);
         })
         .catch( function(error){
-            console.log('Error: ', error);
+            throw('Error: ', error);
         })
     }
 }
