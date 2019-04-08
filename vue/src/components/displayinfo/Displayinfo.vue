@@ -128,9 +128,8 @@ export default {
 
 .genre {
     display: inline-block;
-    padding-top: 20px;
-    padding-right:20px;
-
+    padding: 20px 20px 20px 0;
+    
 }
 
 .button{
