@@ -1,6 +1,6 @@
 <template>
     <div class="col-md post">
-        <router-link :to="`/Info/${post.title ? 'movie' : 'tv'}/${post.id}`">
+        <router-link :to="`/Info/${post.title ? 'movie' : 'tv'}/${post.id}`" style="text-decoration:none;">
             <div class="poster">
                 <img v-bind:src="getImage(post.poster_path)" class="allImg" /> 
             </div>

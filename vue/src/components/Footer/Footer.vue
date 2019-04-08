@@ -1,6 +1,6 @@
 <template>
     <div class="Footer">
-        <h1><span id="red">ALLEZ</span>CINE!</h1>   
+        <h2><span id="red">ALLEZ</span>CINE!</h2>   
         <div class="containCol">
             <div id="firstCol">
                 <h3>LES FONDAMENTAUX</h3>
@@ -44,8 +44,9 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:600,700');
 
-h1 {
+h2 {
     font-family: 'Fira Sans', sans-serif;
+    font-size: 258px;
 }
 
 
