@@ -3,6 +3,7 @@
 * {
     font-family: 'Fira Sans', sans-serif;
     box-sizing: border-box;
+    text-decoration: black;
 }
 
 h1{
@@ -15,6 +16,13 @@ h1{
 
 h4 {
     font-size: 1em;
+    /* display: inline-block; */
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    /* color: black;
+    text-decoration: none; */
 }
 
 .poster{
