@@ -1,11 +1,11 @@
 <template>
-    <div class="displayinfo">
-        <!-- <div class="picture">
+    <div class="displayinfo" v-if="info">
+        <div class="picture">
             <img class="displayimg" :src="getImage(info.poster_path)" alt="posters"/>
-        </div> -->
+        </div>
         <div class="about">
             <div class="titledate">
-                <!-- <div v-if="info.title" class="displaytitle">
+                <div v-if="info.title" class="displaytitle">
                     <h3>{{info.title}}</h3> 
                 </div>
                 <div v-if="info.name" class="displaytitle">
@@ -21,22 +21,20 @@
                     <div class="starsInner">
                         
                     </div>
-                </div> -->
-                {{result.name}}
+                </div>
             </div>
-            <!-- <div class="overview">
+            <div class="overview">
                 <h4>Synopsis</h4>
                 {{info.overview}}
             </div>
             <div v-for="(genre, index) in genres" :key="index" class="genre">
                 <button class="button">{{genre.name}}</button>
-            </div> -->
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import axios from 'axios'
 import {getImage} from '../../utils/getImage'
 import { getYear } from '../../utils/getYear'
 import {getData} from '../../utils/getData'
@@ -45,12 +43,11 @@ export default {
 
     data () {
         return {
-        idMovie: null,
-        info: null,
-        loading: true,
-        errored: false,
-        genres: null,
-        result: null
+            idMovie: null,
+            info: {},
+            loading: true,
+            errored: false,
+            genres: null,
         }
     },
     methods: {
@@ -64,8 +61,7 @@ export default {
         
         let type = this.$router.history.current.params.type;
         let id = this.$router.history.current.params.id
-        
-        console.log(this.result);
+        this.info = getData(type, id)
         /* axios
         .get(`https://api.themoviedb.org/3/${this.$router.history.current.params.type}/${this.$router.history.current.params.id}?api_key=7ca673fff2a5fb82abd38a9a0d559c4e&language=en-US`)
         .then(response => {
