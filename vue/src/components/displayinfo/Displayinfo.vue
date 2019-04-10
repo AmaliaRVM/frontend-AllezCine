@@ -1,11 +1,11 @@
 <template>
     <div class="displayinfo">
-        <div class="picture">
+        <!-- <div class="picture">
             <img class="displayimg" :src="getImage(info.poster_path)" alt="posters"/>
-        </div>
+        </div> -->
         <div class="about">
             <div class="titledate">
-                <div v-if="info.title" class="displaytitle">
+                <!-- <div v-if="info.title" class="displaytitle">
                     <h3>{{info.title}}</h3> 
                 </div>
                 <div v-if="info.name" class="displaytitle">
@@ -17,14 +17,20 @@
                 <div v-if="info.first_air_date" class="displaydate">
                     <h3>{{getYear(info.first_air_date)}}</h3>
                 </div>
+                <div class="starsOuter">
+                    <div class="starsInner">
+                        
+                    </div>
+                </div> -->
+                {{result.name}}
             </div>
-            <div class="overview">
+            <!-- <div class="overview">
                 <h4>Synopsis</h4>
                 {{info.overview}}
             </div>
             <div v-for="(genre, index) in genres" :key="index" class="genre">
                 <button class="button">{{genre.name}}</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -33,6 +39,7 @@
 import axios from 'axios'
 import {getImage} from '../../utils/getImage'
 import { getYear } from '../../utils/getYear'
+import {getData} from '../../utils/getData'
 
 export default {
 
@@ -42,17 +49,24 @@ export default {
         info: null,
         loading: true,
         errored: false,
-        genres: null
+        genres: null,
+        result: null
         }
     },
     methods: {
         getImage,
-        getYear
+        getYear,
+        getData
     },
 
     mounted () {
         // get film api
-        axios
+        
+        let type = this.$router.history.current.params.type;
+        let id = this.$router.history.current.params.id
+        
+        console.log(this.result);
+        /* axios
         .get(`https://api.themoviedb.org/3/${this.$router.history.current.params.type}/${this.$router.history.current.params.id}?api_key=7ca673fff2a5fb82abd38a9a0d559c4e&language=en-US`)
         .then(response => {
             this.info = response.data
@@ -71,7 +85,7 @@ export default {
         .catch(error => {
             this.errored = true
             })
-        .finally(() => this.loading = false)
+        .finally(() => this.loading = false) */
     }
 
 }
@@ -109,9 +123,10 @@ export default {
     padding: 0px 100px 100px 100px;
     font-family:'Fira Sans', sans-serif;
 }
-
+/* Title and date container */
 .titledate {
     display: flex;
+    
 }
 
 .displaytitle {
@@ -119,9 +134,13 @@ export default {
 }
 
 .displaydate {
-    margin: auto;
+    padding: 0 30px 0 30px;
 }
 
+.starsOuter {
+    padding-left: 100px;
+}
+/*  Overview container*/
 .overview {
     padding-right: 40%;
 }
@@ -131,7 +150,7 @@ export default {
     padding: 20px 20px 20px 0;
     
 }
-
+/* Genre container */
 .button{
     background-color:white;
     border: none;
@@ -142,6 +161,4 @@ export default {
     text-decoration: none;
     margin: 4px 2px;
 }
-
-
 </style>
