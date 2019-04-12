@@ -3,10 +3,10 @@
         <form id="comment">
             <h3>Comments</h3>
             <fieldset>
-                <input placeholder="Title" type="text" tabindex="1" required autofocus>
+                <input placeholder="Title" type="text" id="title" required autofocus>
             </fieldset>
             <fieldset>
-                <textarea placeholder="Type your message here" cols="30" rows="10" required></textarea>
+                <textarea placeholder="Type your message here"></textarea>
             </fieldset>
             <fieldset>
                 <button name="submit" type="submit" data-submit="...Sending">
@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 .commentcontainer{
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
     position: relative;
 }
@@ -50,10 +50,13 @@ fieldset{
     width: 100%;
 }
 
+
+
 textarea {
     height: 100px;
-    max-width: 100%;
+    width: 500px;
     resize: none;
 }
+
 </style>
 
